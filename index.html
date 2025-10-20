@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre de Tu Papelería - Productos Creativos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ========================================= */
+        /* PALETA DE COLORES */
+        /* Rosa Fuerte: #FF69B4 (Hot Pink) */
+        /* Azul Cielo: #00BFFF (Deep Sky Blue) */
+        /* Amarillo/Mostaza: #FFD700 (Gold/Mostaza) */
+        /* Fondo Claro: #FCE4EC (Pale Pink/Casi Blanco) */
+        /* ========================================= */
+        
+        /* ========================================= */
+        /* ESTILOS GENERALES Y RESET */
+        /* ========================================= */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C0F9FA; /* Fondo muy claro y suave */
+             
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ========================================= */
+        /* ENCABEZADO Y NAVEGACIÓN */
+        /* ========================================= */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(255, 105, 180, 0.2); /* Sombra con toque rosa */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 90px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo a {
+            font-size: 28px;
+            font-weight: bold;
+            color: #FF69B4; /* Rosa Fuerte para el logo */
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #00BFFF; /* Azul Cielo para los iconos */
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FF69B4; /* Hover en Rosa Fuerte */
+        }
+
+        /* ========================================= */
+        /* ESTILOS DE CARRUSEL (ANIMADO SOLO CON CSS) */
+        /* ========================================= */
+        /* Contenedor principal que enmascara las imágenes */
+        .banner-container {
+            margin-left: 10%;
+            width: 80%;
+            overflow: hidden; 
+            margin-bottom: 50px; 
+            border-radius: 10px; 
+            border: solid 2px black;
+        }
+
+        /* Contenedor interno que contiene todas las diapositivas */
+        .carousel-track {
+            display: flex;
+            width: 400%; /* 100% * 4 diapositivas */
+            animation: carrusel-movimiento 20s infinite linear; 
+        }
+
+        /* Define la animación de desplazamiento */
+        @keyframes carrusel-movimiento {
+            0% { transform: translateX(0); } 
+            20% { transform: translateX(0); }
+            25% { transform: translateX(-25%); } 
+            45% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); } 
+            70% { transform: translateX(-50%); }
+            75% { transform: translateX(-75%); } 
+            95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); } 
+        }
+        
+        /* Contenedor individual para cada diapositiva */
+        .carousel-slide {
+            width: 25%;
+            height: 450px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilos de fondo (Imágenes de muestra - REEMPLAZAR con tus propias URL) */
+        .slide-1 { background-image: url('1.jpeg'); }
+        .slide-2 { background-image: url('2.jpeg'); }
+        .slide-3 { background-image: url('3.jpeg'); }
+        .slide-4 { background-image: url('4.jpg'); }
+
+        .banner-content {
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding: 30px 60px; 
+            border-radius: 10px;
+        }
+
+        .banner-content h1 {
+            margin-top: 0;
+            font-size: 3.5em; 
+            color: #fff;
+            text-shadow: 2px 2px #FF69B4; /* Sombra de texto rosa */
+        }
+
+        .banner-content p {
+            font-size: 1.4em;
+            color: #FFD700; /* Texto secundario en amarillo */
+            font-weight: bold;
+        }
+
+        /* ========================================= */
+        /* SECCIÓN PRODUCTOS */
+        /* ========================================= */
+        .products-section {
+            padding: 20px 0 60px;
+            text-align: center;
+        }
+
+        .products-section h2 {
+            font-size: 3em;
+            color: #00BFFF; /* Título de sección en Azul Cielo */
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        /* Separador decorativo debajo del título */
+        .products-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background-color: #FF69B4; /* Línea de color Rosa Fuerte */
+            margin: 10px auto 0;
+            border-radius: 5px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border: 2px solid #ddd; 
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0, 191, 255, 0.2); /* Sombra con toque azul */
+            border-color: #FF69B4; /* Borde de color al pasar el mouse */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 1.3em;
+            color: #27BEF5; /* Título de producto en Rosa Fuerte */
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            color: #555;
+            font-weight: bold;
+        }
+        
+        /* Adaptación para pantallas más pequeñas (Responsive Design) */
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .carousel-slide {
+                height: 300px;
+            }
+            .banner-content h1 {
+                font-size: 2em;
+            }
+            .banner-content p {
+                font-size: 1.1em;
+            }
+        }
+
+
+        /* ========================================= */
+        /* FOOTER */
+        /* ========================================= */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+            border-top: 5px solid #FFD700; /* Borde superior en Amarillo Mostaza */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-info {
+            flex-basis: 30%;
+            min-width: 250px;
+        }
+
+        .footer-social-contact {
+            flex-basis: 30%;
+            min-width: 200px;
+            text-align: right;
+        }
+
+        .footer-info h4, .footer-social-contact h4 {
+            color: #27BEF5; /* Títulos en el footer en Rosa Fuerte */
+            margin-bottom: 15px;
+        }
+
+        .footer-social-contact p {
+            margin: 5px 0;
+        }
+
+        .footer-social-contact .social-links {
+            justify-content: flex-end; 
+            margin-top: 10px;
+        }
+
+        .footer-social-contact .social-links a {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .footer-social-contact .social-links a:hover {
+            color: #00BFFF; /* Hover en Azul Cielo */
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Dentro de la sección de ESTILOS GENERALES Y RESET o ENCABEZADO Y NAVEGACIÓN */
+
+        .logo a {
+            /* Estas líneas ya no son necesarias si usamos una imagen, pero las mantenemos por si fallara la imagen. */
+            /* font-size: 28px; */
+            /* font-weight: bold; */
+            /* color: #FF69B4; */
+            /* letter-spacing: 1px; */
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 100px; /* Define la altura de tu logo (ajusta este valor) */
+            width: auto; /* Mantiene la proporción de la imagen */
+            vertical-align: middle; /* Alinea bien la imagen en la barra */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+            <a href="#">
+                <img src="logo.png" alt="Logo " class="logo-img">
+            </a>
+        </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner-container">
+        <div class="carousel-track">
+            
+            <div class="carousel-slide slide-1">
+                <div class="banner-content">
+                    <h1>¡Inspira tu Creatividad!</h1>
+                    <p>Descubre nuestros nuevos cuadernos y sets de arte.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide slide-2">
+                <div class="banner-content">
+                    <h1>¡Aprovecha el Descuento!</h1>
+                    <p>20% de descuento en todos los lápices de colores.</p>
+                </div>
+            </div>
+            
+            <div class="carousel-slide slide-3">
+                <div class="banner-content">
+                    <h1>Compromiso con el Planeta</h1>
+                    <p>Nuevos productos con materiales ecológicos.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide slide-4">
+                <div class="banner-content">
+                    <h1>¡Envío Gratis!</h1>
+                    <p>Por compras superiores a $80.000 COP.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="container">
+            <h2>Productos Destacados de la Semana</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="1.jpeg" alt="Cuaderno Premium">
+                    <h3>Cuaderno Premium A5</h3>
+                    <p>Ideal para bocetos y notas.</p>
+                    <p>$15.000 COP</p>
+                </div>
+                
+                <div class="product-card">
+                    <img src="2.jpeg" alt="Set de Lápices de Colores">
+                    <h3>Set de Lápices Artísticos</h3>
+                    <p>36 colores vibrantes y duraderos.</p>
+                    <p>$35.000 COP</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="3.jpeg" alt="Agenda 2025">
+                    <h3>Agenda Personalizada 2025</h3>
+                    <p>Organiza tu año con estilo.</p>
+                    <p>$25.000 COP</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="4.jpg" alt="Block de Notas Adhesivas">
+                    <h3>Block de Notas Adhesivas</h3>
+                    <p>Varios colores y formas.</p>
+                    <p>$8.000 COP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>Sobre Nosotros</h4>
+                    <p>Somos una **papelería** dedicada a ofrecer productos de alta calidad que fomentan la creatividad y la organización. Desde cuadernos artesanales hasta los mejores sets de arte, somos tu aliado perfecto para estudiar o trabajar.</p>
+                </div>
+                <div class="footer-social-contact">
+                    <h4>Contacto y Redes</h4>
+                    <p>📞 +57 300 123 4567</p>
+                    <p>📧 contacto@tupapeleria.com</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Nombre de Tu Papelería. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
